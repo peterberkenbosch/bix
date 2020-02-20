@@ -5,6 +5,9 @@ module Bix
         include Dry::Monads[:result]
         include Dry::Monads::Do.for(:call)
 
+        include Import["contracts.users.create"]
+        include Import["repos.user"]
+
         def call(input)
           values = yield validate(input)
           user = yield persist(values)
@@ -13,13 +16,11 @@ module Bix
         end
 
         def validate(input)
-          create_contract = Contracts::Users::Create.new
-          create_contract.call(input).to_monad
+          create.call(input).to_monad
         end
 
         def persist(result)
-          user_repo = Bix::Repos::User.new
-          Success(user_repo.create(result.values))
+          Success(user.create(result.values))
         end
       end
     end
