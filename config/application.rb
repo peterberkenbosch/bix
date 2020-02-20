@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "dry/system/container"
+require "dry/auto_inject"
 
 module Bix
   class Application < Dry::System::Container
@@ -13,4 +14,5 @@ module Bix
 
     load_paths!('lib')
   end
+  Import = Dry::AutoInject(Application)
 end
