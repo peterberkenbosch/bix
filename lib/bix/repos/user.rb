@@ -1,6 +1,8 @@
 module Bix
   module Repos
     class User < ROM::Repository[:users]
+      struct_namespace Bix::Entities
+
       commands :create,
         use: :timestamps,
         plugins_options: {
