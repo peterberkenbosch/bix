@@ -1,6 +1,6 @@
 module Bix
   module Repos
-    class UserRepo < ROM::Repository[:users]
+    class User < ROM::Repository[:users]
 
     end
   end
