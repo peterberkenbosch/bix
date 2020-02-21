@@ -15,6 +15,7 @@ gem "hanami-router", "~> 1.3"
 
 gem 'dotenv'
 gem 'rake'
+gem 'puma'
 
 group :test do
   gem 'rspec'
