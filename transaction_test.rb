@@ -2,7 +2,7 @@ require_relative "config/application"
 
 Bix::Application.finalize!
 
-include Dry::Monads[:result]
+# include Dry::Monads[:result]
 
 input = {
   first_name: "Ryan",
@@ -11,7 +11,7 @@ input = {
 }
 
 create_user = Bix::Transactions::Users::Create.new
-case create_user.call(input)
+case result = create_user.call(input)
 when Success
   puts "User created successfully!"
 when Failure(Dry::Validation::Result)
